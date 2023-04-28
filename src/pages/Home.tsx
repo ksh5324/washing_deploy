@@ -61,7 +61,26 @@ const Home = () => {
       <Title>세탁기 예약</Title>
       <Label>세탁기</Label>
       <SelectBox>
+        <option>[3층] 좌측 세면실 1번</option>
+        <option>[3층] 좌측 세면실 2번</option>
+        <option>[3층] 좌측 세면실 3번</option>
+        <option>[3층] 우측 세면실 1번</option>
+        <option>[3층] 우측 세면실 2번</option>
+        <option>[3층] 우측 세면실 3번</option>
+
+        <option>[4층] 좌측 세면실 1번</option>
+        <option>[4층] 좌측 세면실 2번</option>
+        <option>[4층] 좌측 세면실 3번</option>
+        <option>[4층] 우측 세면실 1번</option>
+        <option>[4층] 우측 세면실 2번</option>
+        <option>[4층] 우측 세면실 3번</option>
+
         <option>[5층] 좌측 세면실 1번</option>
+        <option>[5층] 좌측 세면실 2번</option>
+        <option>[5층] 좌측 세면실 3번</option>
+        <option>[5층] 우측 세면실 1번</option>
+        <option>[5층] 우측 세면실 2번</option>
+        <option>[5층] 우측 세면실 3번</option>
       </SelectBox>
       <Label>희망 시간</Label>
       <SelectBox>
