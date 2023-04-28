@@ -40,6 +40,10 @@ export const ApplyButton = styled.button`
   border-radius: 10px;
   border: none;
   margin-top: 101px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  color: #ffffff;
 `;
 
 export const P = styled(Label)`
