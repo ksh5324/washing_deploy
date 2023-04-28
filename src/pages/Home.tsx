@@ -84,7 +84,15 @@ const Home = () => {
       </SelectBox>
       <Label>희망 시간</Label>
       <SelectBox>
+        <option>오전 8시 00분</option>
+        <option>오전 10시 00분</option>
+        <option>오후 12시 00분</option>
+        <option>오후 2시 30분</option>
+        <option>오후 4시 00분</option>
+        <option>오후 5시 30분</option>
+        <option>오후 7시 00분</option>
         <option>오후 9시 20분</option>
+        <option>오후 11시 00분</option>
       </SelectBox>
       <P>세탁물 양</P>
       <Flex>
