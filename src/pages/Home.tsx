@@ -6,9 +6,11 @@ import React, {
 } from "react";
 import {
   ApplyButton,
+  Flex,
   Label,
   P,
   SelectBox,
+  Status,
   Title,
 } from "../components/common/common.style";
 import {
@@ -66,17 +68,20 @@ const Home = () => {
         <option>오후 9시 20분</option>
       </SelectBox>
       <P>세탁물 양</P>
-      <ProgressContainer>
-        <ProgressCard1 />
-        <ProgressCard2 />
-        <Progress
-          fill={fill}
-          onMouseDown={click}
-          onMouseMove={move}
-          onMouseUp={() => setIsClicked(false)}
-          onMouseLeave={() => setIsClicked(false)}
-        ></Progress>
-      </ProgressContainer>
+      <Flex>
+        <Status status={fill}>중간 정도</Status>
+        <ProgressContainer>
+          <ProgressCard1 />
+          <ProgressCard2 />
+          <Progress
+            fill={fill}
+            onMouseDown={click}
+            onMouseMove={move}
+            onMouseUp={() => setIsClicked(false)}
+            onMouseLeave={() => setIsClicked(false)}
+          ></Progress>
+        </ProgressContainer>
+      </Flex>
       <ApplyButton>배정 신청</ApplyButton>
     </Layout>
   );

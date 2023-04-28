@@ -45,3 +45,15 @@ export const ApplyButton = styled.button`
 export const P = styled(Label)`
   margin-bottom: 19px;
 `;
+
+export const Status = styled.div<{ status: number }>`
+  color: ${({ status }) =>
+    status < 50 ? "green" : status < 75 ? "rgba(249, 119, 46, 1)" : "red"};
+
+  font-weight: 700;
+`;
+
+export const Flex = styled.div`
+  display: flex;
+  gap: 107px;
+`;
