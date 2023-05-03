@@ -32,6 +32,19 @@ export const SelectBox = styled.select`
   margin-bottom: 30px;
 `;
 
+export const Write = styled.div`
+  width: 276px;
+  height: 40px;
+
+  margin-bottom: 30px;
+`;
+
+export const Ul = styled.ul`
+  margin: 0;
+  padding-left: 20px;
+  margin-bottom: 100px;
+`;
+
 export const ApplyButton = styled.button`
   width: 305px;
   height: 44px;
