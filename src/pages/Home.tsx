@@ -1,9 +1,4 @@
-import React, {
-  MouseEventHandler,
-  TouchEventHandler,
-  useEffect,
-  useState,
-} from "react";
+import React, { MouseEventHandler, useState } from "react";
 import {
   ApplyButton,
   Flex,
@@ -19,9 +14,9 @@ import {
   ProgressCard2,
   ProgressContainer,
 } from "../components/common/progress/progress.style";
-import { useLocation } from "react-router-dom";
-import axios from "axios";
 import { Layout } from "../components/common/layout/Layout";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const Home = () => {
   const [fill, setFill] = useState<number>(0);
@@ -35,27 +30,7 @@ const Home = () => {
       setFill(100 - e.nativeEvent.offsetY);
     }
   };
-  const location = useLocation();
-  const authUrl = `https://dauth.b1nd.com/login?client_id=4cc81ba00f174bc09340a1d6d75927665b7f7c0ca5a844a98af774648043a857&redirect_uri=http://localhost:3000`;
-  const [dauthCode, setDauthCode] = useState<string | null>();
 
-  useEffect(() => {
-    setDauthCode(location.search.split("&")[0].split("=")[1]);
-  }, []);
-
-  useEffect(() => {
-    getToken();
-  }, [dauthCode]);
-
-  const getToken = async () => {
-    if (!dauthCode) {
-      return;
-    }
-    const data = await axios.post(
-      `http://server.fastwash.kro.kr:8080/auth/sign-in?code=${dauthCode}`
-    );
-    console.log(data);
-  };
   return (
     <Layout>
       <Title>세탁기 예약</Title>
@@ -110,8 +85,23 @@ const Home = () => {
         </ProgressContainer>
       </Flex>
       <ApplyButton>배정 신청</ApplyButton>
+      <LinkDiv>
+        <Link to="/wash" style={{ color: "black", textDecoration: "none" }}>
+          세탁하러 가기
+        </Link>
+      </LinkDiv>
     </Layout>
   );
 };
 
 export default Home;
+
+const LinkDiv = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+  width: 85%;
+  margin-top: 20px;
+
+  font-weight: 700;
+`;

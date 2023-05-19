@@ -7,8 +7,12 @@ import {
   ApplyButton,
 } from "../components/common/common.style";
 import { Layout } from "../components/common/layout/Layout";
+import Modal from "../components/common/Modal/Modal";
+import useModal from "../hooks/useModal";
 
 const Wash = () => {
+  const { close, isOpened, open } = useModal();
+
   return (
     <Layout>
       <Title>배정된 세탁기</Title>
@@ -23,7 +27,8 @@ const Wash = () => {
         <li>한상빈</li>
         <li>최민재</li>
       </Ul>
-      <ApplyButton>세탁기 문 열기</ApplyButton>
+      <ApplyButton onClick={open}>세탁기 문 열기</ApplyButton>
+      {isOpened && <Modal close={close} />}
     </Layout>
   );
 };
