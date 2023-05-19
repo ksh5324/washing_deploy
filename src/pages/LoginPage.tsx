@@ -1,12 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { loginState } from "../atom/login/Login";
 
 const LoginPage = () => {
   const location = useLocation();
   const authUrl = `https://dauth.b1nd.com/login?client_id=4cc81ba00f174bc09340a1d6d75927665b7f7c0ca5a844a98af774648043a857&redirect_uri=https://washing-deploy.vercel.app/`;
   const [dauthCode, setDauthCode] = useState<string | null>();
+  const [_, setAuth] = useRecoilState(loginState);
 
   useEffect(() => {
     setDauthCode(location.search.split("&")[0].split("=")[1]);
@@ -15,6 +18,7 @@ const LoginPage = () => {
   useEffect(() => {
     if (dauthCode) {
       localStorage.setItem("Authorization", dauthCode);
+      setAuth(true);
     }
   }, [dauthCode]);
 

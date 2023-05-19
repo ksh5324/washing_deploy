@@ -6,7 +6,6 @@ import LoginPage from "../../../pages/LoginPage";
 
 const Auth = ({ children }: PropsWithChildren<unknown>) => {
   const [auth, setAuth] = useRecoilState(loginState);
-  const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,7 +13,7 @@ const Auth = ({ children }: PropsWithChildren<unknown>) => {
       setAuth(true);
       navigate("/");
     }
-  }, [location.search]);
+  }, [auth]);
 
   if (!auth) {
     return <LoginPage />;
