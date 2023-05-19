@@ -12,7 +12,7 @@ const Auth = ({ children }: PropsWithChildren<unknown>) => {
     if (localStorage.getItem("Authorization")) {
       setAuth(true);
     }
-  }, [location]);
+  }, [location.search]);
 
   if (!auth) {
     return <LoginPage />;
