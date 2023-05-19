@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const LoginPage = () => {
   const location = useLocation();
-  const authUrl = `https://dauth.b1nd.com/login?client_id=4cc81ba00f174bc09340a1d6d75927665b7f7c0ca5a844a98af774648043a857&redirect_uri=https://washing-deploy.vercel.app/`;
+  const authUrl = `https://dauth.b1nd.com/login?client_id=4cc81ba00f174bc09340a1d6d75927665b7f7c0ca5a844a98af774648043a857&redirect_uri=http://localhost:3000`;
   const [dauthCode, setDauthCode] = useState<string | null>();
 
   useEffect(() => {
