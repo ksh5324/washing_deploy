@@ -7,7 +7,7 @@ import { loginState } from "../atom/login/Login";
 
 const LoginPage = () => {
   const location = useLocation();
-  const authUrl = `https://dauth.b1nd.com/login?client_id=4cc81ba00f174bc09340a1d6d75927665b7f7c0ca5a844a98af774648043a857&redirect_uri=https://washing-deploy.vercel.app/`;
+  const authUrl = `https://dauth.b1nd.com/login?client_id=4cc81ba00f174bc09340a1d6d75927665b7f7c0ca5a844a98af774648043a857&redirect_uri=http://localhost:3000/`;
   const [dauthCode, setDauthCode] = useState<string | null>();
   const [_, setAuth] = useRecoilState(loginState);
 
@@ -17,7 +17,6 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (dauthCode) {
-      localStorage.setItem("Authorization", dauthCode);
       setAuth(true);
     }
   }, [dauthCode]);
@@ -30,10 +29,10 @@ const LoginPage = () => {
     if (!dauthCode) {
       return;
     }
-    const data = await axios.post(
+    const { data } = await axios.post(
       `http://server.fastwash.kro.kr:8080/auth/sign-in?code=${dauthCode}`
     );
-    console.log(data);
+    localStorage.setItem("Authorization", data?.access_token);
   };
 
   return (
@@ -71,3 +70,5 @@ const LoginContainer = styled.div`
     color: white;
   }
 `;
+
+// https://washing-deploy.vercel.app/

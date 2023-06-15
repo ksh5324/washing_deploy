@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useState } from "react";
+import React, { ChangeEventHandler, MouseEventHandler, useState } from "react";
 import {
   ApplyButton,
   Flex,
@@ -17,6 +17,7 @@ import {
 import { Layout } from "../components/common/layout/Layout";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Button } from "@dgswcns/common-ui";
 
 const Home = () => {
   const [fill, setFill] = useState<number>(0);
