@@ -9,26 +9,23 @@ import {
 import { Layout } from "../components/common/layout/Layout";
 import Modal from "../components/common/Modal/Modal";
 import useModal from "../hooks/useModal";
+import { useGetMe } from "../queries/washer/washer.query";
 
 const Wash = () => {
   const { close, isOpened, open } = useModal();
+  const { data } = useGetMe();
 
   return (
     <Layout>
       <Title>배정된 세탁기</Title>
       <Label>세탁기</Label>
-      <Write>[5층] 좌측 세면실 1번</Write>
+      <Write>{data && data.washer.name}</Write>
       <Label>시간대</Label>
-      <Write>오후 9시 20분~9시 30분</Write>
+      <Write>{data && data.time}</Write>
       <Label>세탁 크루</Label>
-      <Ul>
-        <li>이승민</li>
-        <li>강성훈</li>
-        <li>한상빈</li>
-        <li>최민재</li>
-      </Ul>
+      <Ul>{data && data.users.map((v: any) => <li>{v.name}</li>)}</Ul>
       <ApplyButton onClick={open}>세탁기 문 열기</ApplyButton>
-      {isOpened && <Modal close={close} />}
+      {isOpened && <Modal close={close} seed={data.seed} />}
     </Layout>
   );
 };
