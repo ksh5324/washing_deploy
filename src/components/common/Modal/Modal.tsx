@@ -8,9 +8,36 @@ import React, {
 import styled, { keyframes } from "styled-components";
 import closePng from "../../../assets/close.png";
 
-const Modal = ({ close }: { close: MouseEventHandler<HTMLDivElement> }) => {
+const Modal = ({
+  close,
+  seed,
+}: {
+  close: MouseEventHandler<HTMLDivElement>;
+  seed: number;
+}) => {
   const [time, setTime] = useState<number>(0);
   const ModalRef = useRef<HTMLImageElement>(null);
+
+  function generateRandom(seed: number) {
+    const timeStamp = Math.round(Date.now() / 10000);
+
+    const value = seed ^ timeStamp;
+
+    const digits = [];
+    for (let i = 1; i <= 6; i++) {
+      const source =
+        timeStamp % 2 == 0
+          ? i % 2 == 1
+            ? value
+            : value % timeStamp
+          : i % 2 == 0
+          ? value
+          : value % timeStamp;
+      digits.push(`${(Math.floor(source / i) % 9) + 1}`);
+    }
+
+    return digits.join("");
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,7 +62,7 @@ const Modal = ({ close }: { close: MouseEventHandler<HTMLDivElement> }) => {
         </ModalHead>
         <ModalBody>
           <ModalBodyTitle>OTP</ModalBodyTitle>
-          <ModalOTP>483 382</ModalOTP>
+          <ModalOTP>{generateRandom(seed)}</ModalOTP>
           <ModalProgress current={time / 10}></ModalProgress>
           <ModalDec>세탁기에 다음 숫자를 입력하세요</ModalDec>
         </ModalBody>
